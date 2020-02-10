@@ -1,0 +1,14 @@
+{% extends "BookDetails/index.html" %}
+{% load static %}
+{% block body %}
+
+    <h2> {{Book.book_name}} </h2>
+    <body>
+        {{Book.description}}
+        <br>
+        {{Book.genre}}
+        <br>
+        {{Book.publishing_info}}
+    </body>
+
+{% endblock %}

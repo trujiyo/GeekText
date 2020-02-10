@@ -1,0 +1,101 @@
+
+/*CSS for the navigation bar and the dropdowns*/
+.navbar{
+    background-color: #00004d;
+    overflow: hidden;
+}
+
+.navbar a{
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    margin: none;
+}
+
+.active{
+    background-color: #4CAF50;
+    color: white;
+}
+
+.navbar .icon{
+    display: none;
+}
+
+.dropdown{
+    float: right;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn{
+    font-size: 17px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #00004d;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a{
+    float: none;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn{
+    background-color: #000080;
+    color: white;
+}
+
+.dropdown a:hover{
+    background-color: #000080;
+    color: white;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+/*Container for the page*/
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  
+h1 {
+    text-align: center;
+    color: #00004d;
+}
+
+/*Card for each book*/
+.flexcontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.card{
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+padding: 16px;
+text-align: center;
+background-color: #f1f1f1;
+}
