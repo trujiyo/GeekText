@@ -9,5 +9,5 @@ def index(request):
     return render(request, 'BookDetails/index.html', {'Book': Books})    
 
 def bookDetails(request, title):
-    book = Book.objects.filter(book_name=title)
+    book = get_object_or_404(Book, book_name=title)
     return render(request, 'BookDetails/bookDetails.html', {'Book': book}) 

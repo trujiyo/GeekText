@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static from staticfiles %}
+
+<!-- links the css for the base-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+<head>
+    <title> Geek Text </title>
+        <!-- the code for the navbar -->
+        <nav>
+            <div class="navbar" id="myNavbar">
+                <div class="dropdown">
+                    <button class="dropbtn">Login<i class="fa fa-caret-down"></i></button>
+                </div>            
+                <div class="dropdown">
+                    <button class="dropbtn">Shopping Cart<i class="fa fa-caret-down"></i></button>
+                    <!-- the code for dropdown content 
+                    <div class="dropdown-content">
+                        <a href = "">Items</a>
+                    </div> -->
+                </div>
+            </div>
+        </nav>
+</head>
+
+
+<body>
+    <div class="container">
+        {% block body %} 
+        {% endblock %}
+    </div>
+</body>
+</html>

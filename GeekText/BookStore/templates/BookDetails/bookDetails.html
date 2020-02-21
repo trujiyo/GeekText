@@ -1,14 +1,22 @@
-{% extends "BookDetails/index.html" %}
-{% load static %}
+{% extends "BookDetails/base.html" %}
 {% block body %}
-
-    <h2> {{Book.book_name}} </h2>
-    <body>
-        {{Book.description}}
+    {% if Book.cover %}
+        <br><br>
+        <img class="img" src="{{ Book.cover.url }}" width="125" height="175">
         <br>
-        {{Book.genre}}
+        <h2>{{ Book.book_name }}</h2>
+        {{ Book.description}}
+        <br><br>
+        <b>Genre:</b> {{ Book.genre }}
         <br>
-        {{Book.publishing_info}}
-    </body>
+        <b>Publisher:</b> {{ Book.publishing_info }}
+    {% else %}
+        <h2>{{ Book.book_name }}</h2>
+        {{ Book.description}}
+        <br><br>
+        <b>Genre:</b> {{ Book.genre }}
+        <br>
+        <b>Publisher:</b> {{ Book.publishing_info }}
+    {% endif %}
 
 {% endblock %}

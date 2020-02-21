@@ -9,6 +9,8 @@ class Book(models.Model):
     description = models.CharField(max_length=10000)
     genre = models.CharField(max_length = 256)
     publishing_info = models.CharField(max_length = 256)
+    cover = models.ImageField(null=True, upload_to='media')
+
     #average_rating
     #cover
     #author name and bio?
