@@ -10,10 +10,12 @@
                 <div class="card">
                     <img class="img" src="{{ books.cover.url }}" width="125" height="175"><br>
                     <a href="{{ books.get_absolute_url }}"> {{books.book_name}} </a>
+                    <br>by: {{books.author}}
                 </div>
                 {% else %}
                 <div class="card">
                     <a href="{{ books.get_absolute_url }}"> {{books.book_name}} </a>
+                    <br>by: {{books.author}}
                 </div>
                 {% endif %}
             {% endfor %}

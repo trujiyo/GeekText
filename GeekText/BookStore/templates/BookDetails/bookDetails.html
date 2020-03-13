@@ -2,7 +2,9 @@
 {% block body %}
     {% if Book.cover %}
         <br><br>
+        <a href= "{{ Book.cover.url }}">
         <img class="img" src="{{ Book.cover.url }}" width="125" height="175">
+        </a>
         <br>
         <h2>{{ Book.book_name }}</h2>
         {{ Book.description}}
@@ -10,6 +12,13 @@
         <b>Genre:</b> {{ Book.genre }}
         <br>
         <b>Publisher:</b> {{ Book.publishing_info }}
+        <br>
+        <b>Publication Date:</b> {{ Book.published_date}}
+        <br><br>
+        <b>Author:</b> {{Book.author}}
+        <br>
+        <b>About the Author:</b> {{Book.author_bio}}
+        <br>
     {% else %}
         <h2>{{ Book.book_name }}</h2>
         {{ Book.description}}
@@ -17,6 +26,13 @@
         <b>Genre:</b> {{ Book.genre }}
         <br>
         <b>Publisher:</b> {{ Book.publishing_info }}
+        <br>
+        <b>Publication Date:</b> {{ Book.published_date}}
+        <br><br>
+        <b>Author:</b> {{Book.author}}
+        <br>
+        <b>About the Author:</b> {{Book.author_bio}}
+        <br>
     {% endif %}
 
 {% endblock %}

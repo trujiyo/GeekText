@@ -1,19 +1,20 @@
 from django.db import models
 from django.urls import reverse
+from datetime import datetime 
 
 # Create your models here.
 
-#S.T. started Book Details model below
+#S.T. created Book Details model below
 class Book(models.Model):
     book_name = models.CharField(max_length = 256)
     description = models.CharField(max_length=10000)
     genre = models.CharField(max_length = 256)
-    publishing_info = models.CharField(max_length = 256)
     cover = models.ImageField(null=True, upload_to='media')
-
+    publishing_info = models.CharField(max_length = 256)
+    published_date = models.DateField(default=datetime.now) 
+    author = models.CharField(max_length = 256, default = "Author Unkown")
+    author_bio = models.CharField(max_length=10000, default = "N/A")
     #average_rating
-    #cover
-    #author name and bio?
     class Meta:
       verbose_name_plural = "Books"
 
