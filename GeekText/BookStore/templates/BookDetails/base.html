@@ -4,6 +4,8 @@
 <!-- links the css for the base-->
 <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 <head>
+    <!-- C.S. added -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title> Geek Text </title>
         <!-- the code for the navbar -->
         <nav>
@@ -12,11 +14,8 @@
                     <button class="dropbtn">Login<i class="fa fa-caret-down"></i></button>
                 </div>            
                 <div class="dropdown">
-                    <button class="dropbtn">Shopping Cart<i class="fa fa-caret-down"></i></button>
-                    <!-- the code for dropdown content 
-                    <div class="dropdown-content">
-                        <a href = "">Items</a>
-                    </div> -->
+                    <!-- C.S. added -->
+                    <button class="dropbtn"><a href=" {% url 'order_summary' %}">Shopping Cart</a><i class="fa fa-caret-down"></i></button>
                 </div>
             </div>
         </nav>
@@ -24,6 +23,8 @@
 
 
 <body>
+    <!-- C.S. added -->   
+    {% include 'BookDetails/messages.html' %}
     <div class="container">
         {% block body %} 
         {% endblock %}
