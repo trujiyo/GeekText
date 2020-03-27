@@ -11,11 +11,18 @@
         <nav>
             <div class="navbar" id="myNavbar">
                 <div class="dropdown">
+                    {% if user.is_authenticated %}
+                    {% else%}
                     <button class="dropbtn">Login<i class="fa fa-caret-down"></i></button>
+                    {% endif%}
                 </div>            
                 <div class="dropdown">
                     <!-- C.S. added -->
-                    <button class="dropbtn"><a href=" {% url 'order_summary' %}">Shopping Cart</a><i class="fa fa-caret-down"></i></button>
+                    {% if user.is_authenticated %}
+                        <button class="dropbtn"><a href=" {% url 'order_summary' %}">Shopping Cart</a><i class="fa fa-caret-down"></i></button>
+                    {% else%}
+                        <button class="dropbtn"><a href=" {% url 'order_summary' %}">Shopping Cart(sign in)</a><i class="fa fa-caret-down"></i></button>
+                    {% endif%}
                 </div>
             </div>
         </nav>

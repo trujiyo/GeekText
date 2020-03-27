@@ -16,11 +16,7 @@
                     <br>by: {{books.author}}
                     <!-- C.S. added -->
                     <p>Price: ${{ books.price }}</p>
-                    {% if books in current_order_products %}
-                    <button><a href=" {% url 'order_summary' %}">Go to Cart</a></button>
-                    {% else %}
-                    <button><a href=" {% url 'add_to_cart' books.id %}">Add to Cart</a></button>
-                    {% endif %}
+                    <button>Add to cart</button>
                 </div>
                 {% else %}
                 <div class="card">
@@ -28,11 +24,7 @@
                     <br>by: {{books.author}}
                     <!-- C.S. added -->
                     <p>Price: ${{ books.price }}</p>
-                    {% if books in current_order_products %}
-                    <button><a href=" {% url 'order_summary' %}">Go to Cart</a></button>
-                    {% else %}
-                    <button><a href=" {% url 'add_to_cart' books.id %}">Add to Cart</a></button>
-                    {% endif %}
+                    <button>Add to cart</button>
                 </div>
                 {% endif %}
             {% endfor %}
