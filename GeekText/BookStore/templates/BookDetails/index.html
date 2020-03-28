@@ -11,11 +11,11 @@
                 {% for books in Book %}
                 {% if books.cover %}
                     <div class="card">
-                        <img class="img" src="{{ books.cover.url }}" width="125" height="175"><br>
+                        <img class="img mx-auto" src="{{ books.cover.url }}" width="125" height="175"><br>
                         <a href="{{ books.get_absolute_url }}"> {{books.book_name}} </a>
-                        <br>by: {{books.author}}
+                        <br>by: <a href=" {% url 'author_book_list' books.author %}">{{books.author}}</a>
                         <!-- C.S. added -->
-                        <p>Price: ${{ books.price }}</p>
+                        <p>Price: ${{ books.price|floatformat:2 }}</p>
                         {% if books in current_order_products %}
                         <button><a href=" {% url 'order_summary' %}">Go to Cart</a></button>
                         {% else %}
@@ -25,9 +25,9 @@
                     {% else %}
                     <div class="card">
                         <a href="{{ books.get_absolute_url }}"> {{books.book_name}} </a>
-                        <br>by: {{books.author}}
+                        <br>by: <a href=" {% url 'author_book_list' books.author %}">{{books.author}}</a>
                         <!-- C.S. added -->
-                        <p>Price: ${{ books.price }}</p>
+                        <p>Price: ${{ books.price|floatformat:2 }}</p>
                         {% if books in current_order_products %}
                         <button><a href=" {% url 'order_summary' %}">Go to Cart</a></button>
                         {% else %}
@@ -42,19 +42,19 @@
                 {% for books in Book %}
                 {% if books.cover %}
                     <div class="card">
-                        <img class="img" src="{{ books.cover.url }}" width="125" height="175"><br>
+                        <img class="img mx-auto" src="{{ books.cover.url }}" width="125" height="175"><br>
                         <a href="{{ books.get_absolute_url }}"> {{books.book_name}} </a>
-                        <br>by: {{books.author}}
+                        <br>by: <a href=" {% url 'author_book_list' books.author %}">{{books.author}}</a>
                         <!-- C.S. added -->
-                        <p>Price: ${{ books.price }}</p>
+                        <p>Price: ${{ books.price|floatformat:2 }}</p>
                         <button>Add to cart</button>
                     </div>
                     {% else %}
                     <div class="card">
                         <a href="{{ books.get_absolute_url }}"> {{books.book_name}} </a>
-                        <br>by: {{books.author}}
+                        <br>by: <a href=" {% url 'author_book_list' books.author %}">{{books.author}}</a>
                         <!-- C.S. added -->
-                        <p>Price: ${{ books.price }}</p>
+                        <p>Price: ${{ books.price|floatformat:2 }}</p>
                         <button>Add to cart</button>
                     </div>
                     {% endif %}

@@ -42,8 +42,8 @@
             </a>
           </span>
         </td>
-        <td>${{ item.product.price }}</td>
-        <td>${{ item.get_total_item_price }} </td>
+        <td>${{ item.product.price|floatformat:2 }}</td>
+        <td>${{ item.get_total_item_price|floatformat:2 }} </td>
       </tr>
       {% empty %}
       <tr>
@@ -56,10 +56,10 @@
           <strong class="pull-right">Order Total:</strong>
         </td>
         <td colspan=1>
-          $<string> {{ order.get_total_price }}</string>
+          $<string> {{ order.get_total_price|floatformat:2 }}</string>
         </td>
-
       </tr>
+
       <tr>
         <td colspan=2>
           <button><a href="{% url 'index' %}">
@@ -121,8 +121,8 @@
             </a>
           </span>
         </td>
-        <td>${{ item.product.price }}</td>
-        <td>${{ item.get_total_item_price }} </td>
+        <td>${{ item.product.price|floatformat:2 }}</td>
+        <td>${{ item.get_total_item_price|floatformat:2 }} </td>
       </tr>
       {% endif %}
       {% empty %}
@@ -130,6 +130,15 @@
         <td colspan=5> You have not added any items yet.</td>
       </tr>
       {% endfor %}
+      <tr>
+        <td colspan=4>
+          <strong class="pull-right">Save list Total:</strong>
+        </td>
+        <td colspan=1>
+          $<string> {{ order.get_total_save_price|floatformat:2 }}</string>
+        </td>
+      </tr>
+
     </table>
   </div>
 </section>

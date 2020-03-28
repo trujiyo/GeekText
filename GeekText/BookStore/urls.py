@@ -17,4 +17,5 @@ urlpatterns = [
     path('reduce-quantity-from-cart/<item_id>', views.reduce_quantity_from_cart, name='reduce_quantity_from_cart'),
     path('save-item/<item_id>', views.save_item, name='save_item'),
     path('add-back-item/<item_id>', views.add_back_item, name='add_back_item'),
+    path('<str:author>/', views.author_book_list, name='author_book_list'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

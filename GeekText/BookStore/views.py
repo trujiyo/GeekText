@@ -18,6 +18,25 @@ def nonUser(request):
     allBook = Book.objects.all()
     return render(request, 'BookDetails/index.html', {'Booklist': allBook}) 
 
+def author_book_list(request, author):
+    Books = Book.objects.filter(author=author)
+    #C.S. edits to index
+    if not request.user.is_authenticated:
+        return render(request, 'BookDetails/index.html', {'Book': Books}) 
+    else:
+        filtered_orders = Order.objects.filter(owner=request.user.profile)
+        current_order_products = []
+        if filtered_orders.exists():
+            user_order = filtered_orders[0]
+            user_order_items = user_order.items.all()
+            current_order_products = [product.product for product in user_order_items]
+
+        context = {
+            'Book': Books,
+            'current_order_products': current_order_products
+        }
+        return render(request, "BookDetails/index.html", context)
+
 #C.S. added this
 def index(request):
     Books = Book.objects.all()
@@ -52,7 +71,22 @@ def add_back_item(request,item_id):
 
 def bookDetails(request, title):
     book = get_object_or_404(Book, book_name=title)
-    return render(request, 'BookDetails/bookDetails.html', {'Book': book}) 
+    #C.S. edits to index
+    if not request.user.is_authenticated:
+        return render(request, 'BookDetails/bookDetails.html', {'Book': book}) 
+    else:
+        filtered_orders = Order.objects.filter(owner=request.user.profile)
+        current_order_products = []
+        if filtered_orders.exists():
+            user_order = filtered_orders[0]
+            user_order_items = user_order.items.all()
+            current_order_products = [product.product for product in user_order_items]
+
+        context = {
+            'Book': book,
+            'current_order_products': current_order_products
+        }
+        return render(request, "BookDetails/bookDetails.html", context)
 
 #C.S. views for Shopping Cart feature
 def generate_order_id():

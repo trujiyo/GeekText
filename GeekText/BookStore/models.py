@@ -16,7 +16,7 @@ class Book(models.Model):
     published_date = models.DateField(default=datetime.now) 
     author = models.CharField(max_length = 256, default = "Author Unkown")
     author_bio = models.CharField(max_length=10000, default = "N/A")
-    price = models.IntegerField(default=10)
+    price = models.DecimalField(max_digits=10, decimal_places=2,null=True)
 
     #average_rating
     class Meta:
@@ -66,5 +66,11 @@ class Order(models.Model):
     def get_total_price(self):
         total = 0
         for item in self.items.filter(is_saved = False):
+            total += item.get_total_item_price()
+        return total
+
+    def get_total_save_price(self):
+        total = 0
+        for item in self.items.filter(is_saved = True):
             total += item.get_total_item_price()
         return total
