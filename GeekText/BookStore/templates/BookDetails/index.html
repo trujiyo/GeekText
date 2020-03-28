@@ -6,36 +6,60 @@
     <div class="container">
         <h1> Welcome to Geek Text </h1>
         <br>
-
-        <div class="flexcontainer">
-            {% for books in Book %}
-               {% if books.cover %}
-                <div class="card">
-                    <img class="img" src="{{ books.cover.url }}" width="125" height="175"><br>
-                    <a href="{{ books.get_absolute_url }}"> {{books.book_name}} </a>
-                    <br>by: {{books.author}}
-                    <!-- C.S. added -->
-                    <p>Price: ${{ books.price }}</p>
-                    {% if books in current_order_products %}
-                    <button><a href=" {% url 'order_summary' %}">Go to Cart</a></button>
+        {% if user.is_authenticated %}
+            <div class="flexcontainer">
+                {% for books in Book %}
+                {% if books.cover %}
+                    <div class="card">
+                        <img class="img" src="{{ books.cover.url }}" width="125" height="175"><br>
+                        <a href="{{ books.get_absolute_url }}"> {{books.book_name}} </a>
+                        <br>by: {{books.author}}
+                        <!-- C.S. added -->
+                        <p>Price: ${{ books.price }}</p>
+                        {% if books in current_order_products %}
+                        <button><a href=" {% url 'order_summary' %}">Go to Cart</a></button>
+                        {% else %}
+                        <button><a href=" {% url 'add_to_cart' books.id %}">Add to Cart</a></button>
+                        {% endif %}
+                    </div>
                     {% else %}
-                    <button><a href=" {% url 'add_to_cart' books.id %}">Add to Cart</a></button>
+                    <div class="card">
+                        <a href="{{ books.get_absolute_url }}"> {{books.book_name}} </a>
+                        <br>by: {{books.author}}
+                        <!-- C.S. added -->
+                        <p>Price: ${{ books.price }}</p>
+                        {% if books in current_order_products %}
+                        <button><a href=" {% url 'order_summary' %}">Go to Cart</a></button>
+                        {% else %}
+                        <button><a href=" {% url 'add_to_cart' books.id %}">Add to Cart</a></button>
+                        {% endif %}
+                    </div>
                     {% endif %}
-                </div>
-                {% else %}
-                <div class="card">
-                    <a href="{{ books.get_absolute_url }}"> {{books.book_name}} </a>
-                    <br>by: {{books.author}}
-                    <!-- C.S. added -->
-                    <p>Price: ${{ books.price }}</p>
-                    {% if books in current_order_products %}
-                    <button><a href=" {% url 'order_summary' %}">Go to Cart</a></button>
+                {% endfor %}
+            </div>
+        {% else%}
+            <div class="flexcontainer">
+                {% for books in Book %}
+                {% if books.cover %}
+                    <div class="card">
+                        <img class="img" src="{{ books.cover.url }}" width="125" height="175"><br>
+                        <a href="{{ books.get_absolute_url }}"> {{books.book_name}} </a>
+                        <br>by: {{books.author}}
+                        <!-- C.S. added -->
+                        <p>Price: ${{ books.price }}</p>
+                        <button>Add to cart</button>
+                    </div>
                     {% else %}
-                    <button><a href=" {% url 'add_to_cart' books.id %}">Add to Cart</a></button>
+                    <div class="card">
+                        <a href="{{ books.get_absolute_url }}"> {{books.book_name}} </a>
+                        <br>by: {{books.author}}
+                        <!-- C.S. added -->
+                        <p>Price: ${{ books.price }}</p>
+                        <button>Add to cart</button>
+                    </div>
                     {% endif %}
-                </div>
-                {% endif %}
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
+        {% endif%}
     </div>
 {% endblock %}

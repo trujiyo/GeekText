@@ -23,7 +23,7 @@ def index(request):
     Books = Book.objects.all()
     #C.S. edits to index
     if not request.user.is_authenticated:
-        return render(request, 'BookDetails/index2.html', {'Book': Books}) 
+        return render(request, 'BookDetails/index.html', {'Book': Books}) 
     else:
         filtered_orders = Order.objects.filter(owner=request.user.profile)
         current_order_products = []
@@ -110,7 +110,6 @@ def delete_from_cart(request, item_id):
 @login_required()
 def order_details(request, **kwargs):
     existing_order = get_user_pending_order(request)
-
     context = {
         'order': existing_order
     }
