@@ -32,12 +32,15 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'BookStore.apps.BookstoreConfig',
+    'django_extensions', # To create UML diagrams
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'address' # For address setup
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +125,21 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT= os.path.join(BASE_DIR,'media')
+
+# Custom user authentication
+AUTH_USER_MODEL = 'users.CustomUser'
+
+# Redirection for login and logout
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
+
+# To create Graph Models
+GRAPH_MODELS = {
+    'all_applications': True,
+    'group_models': True,
+    #'verbose_names': True,
+    #'arrow_shape': box,
+}
+
+# Google Maps API
+GOOGLE_API_KEY = 'AIzaSyD--your-google-maps-key-SjQBE'
