@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static  %}
+
+    <meta charset="UTF-8">
+    <title>GeekText</title>
+
+<!-- links the css for the base-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+<head>
+    <!-- C.S. added -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="wrapper">
+        <div class="multi_color_border"></div>
+        <div class="top_nav">
+            <div class="left">
+              <div class="logo"><p><span>Geek</span>Text</p></div>
+              <div class="search_bar">
+                  <input type="text" placeholder="Search">
+              </div>
+          </div> 
+          <div class="right">
+            <ul>
+              <li><a href="{% url 'index' %}">HOME</a></li>
+              {% if user.is_authenticated %}
+              <li ><a href=" {% url 'order_summary' %}">Shopping Cart<i class="fa fa-shopping-cart"></i></a></li>
+              {% else%}
+              <li ><a href=" {% url 'order_summary' %}">Sign Up<i class="fa fa-shopping-cart"></i></a></li>
+              {% endif%}
+              {% if user.is_authenticated %}
+              {% else%}
+              <li><a href="#">Login</a></li>
+              {% endif%}  
+            </ul>
+          </div>
+        </div>
+        <div class="bottom_nav">
+          <ul>
+            <li>BROWSE BY:</li>
+            <li><a>Book Genres</a>
+              <ul> 
+                <li><a href="/Drama/">Drama</a></li> 
+                <li><a href="/Dystopian/">Dystopian</a></li>
+                <li><a href="/Fantasy/">Fantasy</a></li>
+                <li><a href="/Historical Fiction/">Historical Fiction</a></li>
+                <li><a href="/Horror/">Horror</a></li>
+                <li><a href="/Mystery/">Mystery</a></li>
+                <li><a href="/NonFiction/">NonFiction</a></li>
+                <li><a href="/Romance/">Romance</a></li>
+                <li><a href="/SciFi/">Sci-Fi</a></li>
+                <li><a href="/Young Adult Fiction/">YA Fiction</a></li>   
+            </ul>
+            </li>
+            <li><a>Ratings</a>
+              <ul> 
+                <li><a href="/rating/1">1 Star</a></li>
+                <li><a href="/rating/2">2 Stars</a></li>
+                <li><a href="/rating/3">3 Stars</a></li>
+                <li><a href="/rating/4">4 Stars</a></li>
+                <li><a href="/rating/5">5 Stars</a></li>
+            </ul>
+            </li>
+            <li><a href="/topseller/">Best Seller</a></li>
+            <li><a>SORT BY: </a>
+              <ul> 
+                <li><a href="/ordering/1/">Title A-Z</a></li>
+                <li><a href="/ordering/7/">Title Z-A</a></li>
+                <li><a href="/ordering/2/">Most Expensive</a></li>
+                <li><a href="/ordering/3/">Least Expensive</a></li>
+                <li><a href="/ordering/4/">Author A-Z</a></li> <!-- changed -->
+                <li><a href="/ordering/8/">Author Z-A</a></li> <!-- changed -->
+                <li><a href="/ordering/5/">Latest Publication Date First</a></li>
+                <li><a href="/ordering/9/">Earliest Publication Date First</a></li>
+                <li><a href="/srating/2/">Rating High to Low</a></li>
+                <li><a href="/srating/1/">Rating Low to High</a></li>
+            </ul>
+            </li>
+          </ul>
+      </div>
+    </body>
+
+
+
+<body>
+    <!-- C.S. added -->   
+    {% include 'BookDetails/messages.html' %}
+    <div class="container">
+        {% block body %} 
+        {% endblock %}
+    </div>
+</body>
+</html>

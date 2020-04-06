@@ -1,0 +1,64 @@
+{% extends "BookDetails/base.html" %}
+{% load static %}
+{% block body %} 
+    <div class="container">
+        <h1> Shop Deals at Geek Text </h1>
+        <br>
+
+        <div class="flexcontainer">
+            {% for books in page_obj%}
+               {% if books.cover %}
+                <div class="card">
+                    <img class="img mx-auto" src="{{ books.cover.url }}" width="125" height="175"><br>
+                    <a href="{{ books.get_absolute_url }}"> {{books.book_name}} </a><br>
+                    <a href=" {% url 'author_book_list' books.author.id %}">{{books.author}}</a><br>
+                     <a><b>Rating:</b> {{books.rating}} Stars</a>
+                     <a>${{books.price}}</a>
+                    {% if books in current_order_products %}
+                    <button><a href=" {% url 'order_summary' %}">Go to Cart</a></button>
+                    {% else %}
+                    <button><a href=" {% url 'add_to_cart' books.id %}">Add to Cart</a></button>
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class="card">
+                    <a href="{{ books.get_absolute_url }}"> </a> {{books.book_name}}</a> <br>
+                    <a href=" {% url 'author_book_list' books.author.id %}">{{books.author}}</a><br>
+                    <a><b>Rating:</b> {{books.rating}} Stars</a>
+                    <a>${{books.price}}</a>
+                    {% if books in current_order_products %}
+                    <button><a href=" {% url 'order_summary' %}">Go to Cart</a></button>
+                    {% else %}
+                    <button><a href=" {% url 'add_to_cart' books.id %}">Add to Cart</a></button>
+                    {% endif %}
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <!-- C.R. changed added pagination -->
+        <form method="GET">
+            <select name="paginate_by" id="">
+                <option value="10">10</option>
+                <option value="20">20</option>
+            </select>
+            <input type="submit" value="Paginate">
+        </form>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+{% endblock %}

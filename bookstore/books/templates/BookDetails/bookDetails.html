@@ -1,0 +1,54 @@
+{% extends "BookDetails/base.html" %}
+{% block body %}
+    {% if Book.cover %}
+        <br><br>
+        <a href= "{{ Book.cover.url }}">
+        <img class="img" src="{{ Book.cover.url }}" width="125" height="175">
+        </a>
+        <br>
+        <h2>{{ Book.book_name }}</h2>
+        {{ Book.description}}
+        <br><br>
+        <b>Genre:</b> {{ Book.genre }}
+        <br>
+        <b>Publisher:</b> {{ Book.publishing_info }}
+        <br>
+        <b>Publication Date:</b> {{ Book.published_date}}
+        <br><br>
+        <b>Author: <a href=" {% url 'author_book_list' Book.author.id %}">{{Book.author}}</a></li></b>
+        <br>
+        <b>About the Author:</b> {{Book.author.bio}}
+        <br>
+        <br><br>
+        <b>Price: </b> ${{Book.price|floatformat:2}}
+        <br>
+        {% if Book in current_order_products %}
+        <button><a href=" {% url 'order_summary' %}">Go to Cart</a></button>
+        {% else %}
+        <button><a href=" {% url 'add_to_cart' Book.id %}">Add to Cart</a></button>
+        {% endif %}
+    {% else %}
+        <h2>{{ Book.book_name }}</h2>
+        {{ Book.description}}
+        <br><br>
+        <b>Genre:</b> {{ Book.genre }}
+        <br>
+        <b>Publisher:</b> {{ Book.publishing_info }}
+        <br>
+        <b>Publication Date:</b> {{ Book.published_date}}
+        <br><br>
+        <b>Author: <a href=" {% url 'author_book_list' Book.author.id %}">{{Book.author}}</a></li></b> 
+        <br>
+        <b>About the Author:</b> {{Book.author.bio}}
+        <br>
+        <br><br>
+        <b>Price: </b> ${{Book.price|floatformat:2}}
+        <br>
+        {% if Book in current_order_products %}
+        <button><a href=" {% url 'order_summary' %}">Go to Cart</a></button>
+        {% else %}
+        <button><a href=" {% url 'add_to_cart' Book.id %}">Add to Cart</a></button>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}
