@@ -26,12 +26,21 @@
               {% if user.is_authenticated %}
               <li ><a href=" {% url 'order_summary' %}">Shopping Cart<i class="fa fa-shopping-cart"></i></a></li>
               {% else%}
+              <!-- SIGN UP TAKEN OUT
               <li ><a href=" {% url 'order_summary' %}">Sign Up<i class="fa fa-shopping-cart"></i></a></li>
+              -->
               {% endif%}
+              <!-- OLD DONE
               {% if user.is_authenticated %}
               {% else%}
               <li><a href="#">Login</a></li>
               {% endif%}  
+              -->
+              {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+              {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+              {% endif %}
             </ul>
           </div>
         </div>
