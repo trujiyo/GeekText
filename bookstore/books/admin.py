@@ -23,6 +23,6 @@ class BookAdmin(admin.ModelAdmin):
 admin.site.register(Book, BookAdmin)
 
 
-admin.site.register(Profile) 
 admin.site.register(Order) 
 admin.site.register(OrderItem) 
+

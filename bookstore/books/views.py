@@ -12,7 +12,7 @@ import string
 import datetime
 from .models import Book, Genre, Author, Profile, Order, OrderItem
 from django import forms
-
+from users.models import Profile
 
 #S.T. views for home page and book details pages
 def nonUser(request):

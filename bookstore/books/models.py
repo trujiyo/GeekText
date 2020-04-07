@@ -3,7 +3,7 @@ from django.urls import reverse
 from datetime import datetime 
 from django.conf import settings
 from django.core.validators import MinValueValidator
-
+from users.models import Profile
 
 STATUS_CHOICES=(
     (1, '1'),
@@ -82,12 +82,6 @@ class Book(models.Model):
 
 
 #C.S. created models relating to Shopping Cart below
-class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-
-    def __str__(self):
-      return self.user.username
-
 
 class OrderItem(models.Model):
     product = models.OneToOneField(Book, on_delete=models.SET_NULL, null=True)
