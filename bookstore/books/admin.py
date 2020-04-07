@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Book, Genre, Author, Profile, Order, OrderItem
+from .models import Book, Genre, Author, Order, OrderItem
+from django.apps import apps
+#from users.models import Profile
 
 # Register your models here.
 
@@ -23,6 +25,6 @@ class BookAdmin(admin.ModelAdmin):
 admin.site.register(Book, BookAdmin)
 
 
-admin.site.register(Profile) 
+#admin.site.register(Profile) 
 admin.site.register(Order) 
 admin.site.register(OrderItem) 

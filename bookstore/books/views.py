@@ -10,7 +10,8 @@ from datetime import date
 import random
 import string
 import datetime
-from .models import Book, Genre, Author, Profile, Order, OrderItem
+from .models import Book, Genre, Author, Order, OrderItem
+from users.models import Profile
 from django import forms
 
 

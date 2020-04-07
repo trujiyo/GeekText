@@ -81,13 +81,13 @@ class Book(models.Model):
         return reverse('bookDetails', args=[self.book_name])
 
 
-#C.S. created models relating to Shopping Cart below
-class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+# #C.S. created models relating to Shopping Cart below
+# class Profile(models.Model):
+#     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
-    def __str__(self):
-      return self.user.username
-
+#     def __str__(self):
+#       return self.user.username
+ 
 
 class OrderItem(models.Model):
     product = models.OneToOneField(Book, on_delete=models.SET_NULL, null=True)
@@ -104,7 +104,7 @@ class OrderItem(models.Model):
 
 class Order(models.Model):
     ref_code = models.CharField(max_length=15)
-    owner = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True)
+    owner = models.ForeignKey('users.Profile', on_delete=models.SET_NULL, null=True)
     items = models.ManyToManyField(OrderItem)
     date_ordered = models.DateTimeField(auto_now=True)
 

@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users.apps.UsersConfig',
+    'users.apps.UsersConfig',   # Users application
+    'crispy_forms',             # Formatting the users application
 ]
 
 MIDDLEWARE = [
@@ -125,9 +126,13 @@ STATIC_ROOT= os.path.join(BASE_DIR,'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 
-# Custom user authentication
-AUTH_USER_MODEL = 'users.CustomUser'
+# # Custom user authentication
+# AUTH_USER_MODEL = 'users.CustomUser'
 
 # Redirection for login and logout
 LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'index'
+
+# Crispy using bootstrap template
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
