@@ -1,0 +1,28 @@
+{% extends 'BookDetails/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %} 
+  
+    <br>
+    <div class="content-section">
+    
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <a href="{% url 'index' %}"><button class="btn btn-outline-info" type="button">Cancel</button></a>
+                <button class="btn btn-outline-info" type="submit">Login</button>
+            </div>
+        </form>
+        <div>
+            <small class="text-muted">
+                Don't Have An Account? <a class="ml-2" href="{% url 'signup' %}">Sign Up Now</a>
+            </small>
+        </div>
+    
+    </div>
+
+{% endblock %}
